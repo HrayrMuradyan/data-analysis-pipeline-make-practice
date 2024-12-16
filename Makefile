@@ -2,7 +2,6 @@
 
 all: report/count_report.html report/count_report_files
 
-# Count the words
 results/isles.dat: scripts/wordcount.py data/isles.txt 
 	python scripts/wordcount.py \
     	--input_file=data/isles.txt \
@@ -23,7 +22,6 @@ results/sierra.dat: scripts/wordcount.py data/sierra.txt
 	    --input_file=data/sierra.txt \
 	    --output_file=results/sierra.dat
 
-# make the plots
 results/figure/isles.png: scripts/plotcount.py results/isles.dat
 	python scripts/plotcount.py \
 	    --input_file=results/isles.dat \
@@ -44,7 +42,6 @@ results/figure/sierra.png: scripts/plotcount.py results/sierra.dat
 	    --input_file=results/sierra.dat \
 	    --output_file=results/figure/sierra.png
 
-# Renders a report
 report/count_report.html report/count_report_files: results/figure/isles.png results/figure/abyss.png results/figure/last.png results/figure/sierra.png
 	quarto render report/count_report.qmd
 
